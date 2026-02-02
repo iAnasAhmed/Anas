@@ -62,26 +62,27 @@ header {
 }
 
 .profile-image {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  border: 5px solid var(--primary);
+  width: 190px;                    /* Slightly wider rectangle */
+  height: 180px;                   /* Fixed height */
+  border-radius: 12px;             /* ← CHANGED: Subtle corners instead of 50% */
+  border: 3px solid var(--primary); /* Thinner border for rectangle */
   box-shadow: var(--shadow);
-  overflow: hidden; /* clip to circle */
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
-
 }
 
 .profile-img {
   width: 90%;
   height: 100%;
-  border-radius: 100%;
-  object-fit: cover; /* fill circle with no empty space */
-
+  border-radius: 12px;             /* ← CHANGED: Matches container */
+  object-fit: cover;               /* Fills rectangle perfectly */
+  object-position: center;
+  display: block;
 }
+
 
 .name-title h1 {
   font-size: 2.8rem;
