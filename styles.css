@@ -794,12 +794,30 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .tabs {
+   .tabs {
     flex-direction: column;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
   }
 
   .tab {
-    width: 100%;
+    padding: 1.3rem 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    flex: none;
+    min-height: 56px; /* iOS touch target */
+    font-size: 1.05rem;
+  }
+
+  .tab:last-child {
+    border-bottom: none;
+  }
+
+  .tab.active::after {
+    display: none; /* Hide underline on mobile */
+  }
+
+  .tab:hover {
+    background-color: rgba(138, 43, 226, 0.15);
   }
 }
 
