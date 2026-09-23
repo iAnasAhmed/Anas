@@ -1,0 +1,11 @@
+{
+  "site": "",
+  "conversion_event": "",
+  "current_test": { "page": "", "main_query": "", "change": "", "live_date": null, "baseline_window": "" },
+  "pages": {
+    "https://example.com/page": {
+      "baseline": { "impressions": 0, "clicks": 0, "ctr": 0, "position": 0, "conversions": 0, "window": "" },
+      "daily_gsc": []
+    }
+  }
+}
