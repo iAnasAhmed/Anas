@@ -961,9 +961,13 @@
               if (Math.abs(r.left + r.width / 2 - middle) < Math.abs(best.left + best.width / 2 - middle)) nearest = i;
             });
             [...dots.children].forEach((d, i) => d.classList.toggle("active", i === nearest));
+            // On mobile the slider is as tall as the card on screen, so short cards leave no gap
+            slider.style.height = getComputedStyle(slider).display === "flex" ? cards[nearest].offsetHeight + 8 + "px" : "";
           };
 
           slider.addEventListener("scroll", () => requestAnimationFrame(update), { passive: true });
+          window.addEventListener("resize", () => requestAnimationFrame(update));
+          window.addEventListener("load", update);
           update();
         });
 
