@@ -859,6 +859,7 @@ footer {
   box-shadow: var(--shadow-border), var(--shadow);
   border-radius: 12px;
   padding: 2rem;
+  margin-bottom: 2rem;
 }
 
 .bsco-intro h3 {
@@ -897,39 +898,10 @@ footer {
   transform: translateY(-3px);
 }
 
-.bsco-shots {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
 
-.bsco-shot {
-  margin: 0;
-  background-color: var(--dark-card);
-  box-shadow: var(--shadow-border), var(--shadow);
-  border-radius: 12px;
-  overflow: hidden;
-}
 
-.bsco-shot img {
-  width: 100%;
-  height: auto;
-  display: block;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top;
-}
 
-.bsco-shot figcaption {
-  padding: 0.9rem 1.2rem;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-}
 
-.bsco-shot figcaption b {
-  color: var(--secondary);
-}
 
 .bsco-features {
   display: grid;
@@ -988,9 +960,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .bsco-shots {
-    grid-template-columns: 1fr;
-  }
 
   .bsco-intro {
     padding: 1.5rem;
@@ -1012,7 +981,6 @@ footer {
   box-shadow: var(--shadow-border), var(--shadow);
 }
 
-.bsco-shot img,
 .profile-img {
   outline: 1px solid oklch(1 0 0 / 0.1);
   outline-offset: -1px;
@@ -1186,5 +1154,74 @@ footer {
 @media (max-width: 420px) {
   .kpi-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Swipe sliders on mobile (work experience, BSCO features) */
+.swipe-hint,
+.slider-dots {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-slider {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    padding-bottom: 0.5rem;
+  }
+
+  .mobile-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-slider > * {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+  }
+
+  .mobile-slider > *:hover {
+    transform: none;
+  }
+
+  .swipe-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .swipe-hint i {
+    color: var(--secondary);
+  }
+
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .slider-dots button {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    transition-property: width, background-color;
+    transition-duration: 150ms;
+    transition-timing-function: ease-out;
+  }
+
+  .slider-dots button.active {
+    width: 22px;
+    background-color: var(--secondary);
   }
 }

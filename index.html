@@ -121,7 +121,9 @@
     <i class="fas fa-briefcase"></i> الخبرة العملية
   </h2>
 
-  <div class="experience-grid">
+  <p class="swipe-hint"><i class="fas fa-hand-pointer"></i> اسحب لرؤية باقي الخبرات</p>
+
+  <div class="experience-grid mobile-slider">
     <!-- BSCO -->
     <div class="experience-card">
       <div class="experience-header">
@@ -352,6 +354,7 @@
       </div>
     </div>
   </div>
+  <div class="slider-dots" aria-hidden="true"></div>
 </section>
 
     <!-- BSCO Project -->
@@ -375,22 +378,13 @@
         </a>
       </div>
 
-      <div class="bsco-shots">
-        <figure class="bsco-shot">
-          <img src="bsco/home-en.jpg" alt="الصفحة الرئيسية لموقع BSCO" loading="lazy" />
-          <figcaption><b>الصفحة الرئيسية:</b> سلايدر للأقسام الثلاثة وبطاقات المصانع</figcaption>
-        </figure>
-        <figure class="bsco-shot">
-          <img src="bsco/chatbot-en.jpg" alt="المساعد الذكي في موقع BSCO" loading="lazy" />
-          <figcaption><b>المساعد الذكي:</b> Chatbot ثنائي اللغة مع زر اتصال بالمبيعات</figcaption>
-        </figure>
-      </div>
-
       <h3 class="section-title" style="font-size: 1.6rem">
         <i class="fas fa-list-check"></i> كل مميزات الموقع
       </h3>
 
-      <div class="bsco-features">
+      <p class="swipe-hint"><i class="fas fa-hand-pointer"></i> اسحب لرؤية باقي المميزات</p>
+
+      <div class="bsco-features mobile-slider">
         <div class="bsco-feature-group">
           <h4><i class="fas fa-globe"></i> الموقع العام</h4>
           <ul>
@@ -477,6 +471,7 @@
           </ul>
         </div>
       </div>
+      <div class="slider-dots" aria-hidden="true"></div>
 
       <div class="skills-used" style="border-top: none">
         <h5>التقنيات المستخدمة:</h5>
@@ -938,6 +933,38 @@
               .querySelectorAll(`.tab-content[data-panel="${tabId}"]`)
               .forEach((panel) => panel.classList.add("active"));
           });
+        });
+
+        // نقاط السلايدر على الموبايل (الخبرات ومميزات BSCO)
+        document.querySelectorAll(".mobile-slider").forEach((slider) => {
+          const dots = slider.nextElementSibling;
+          if (!dots || !dots.classList.contains("slider-dots")) return;
+          const cards = [...slider.children];
+
+          cards.forEach((card) => {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.tabIndex = -1;
+            dot.addEventListener("click", () =>
+              card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" }),
+            );
+            dots.appendChild(dot);
+          });
+
+          const update = () => {
+            const box = slider.getBoundingClientRect();
+            const middle = box.left + box.width / 2;
+            let nearest = 0;
+            cards.forEach((card, i) => {
+              const r = card.getBoundingClientRect();
+              const best = cards[nearest].getBoundingClientRect();
+              if (Math.abs(r.left + r.width / 2 - middle) < Math.abs(best.left + best.width / 2 - middle)) nearest = i;
+            });
+            [...dots.children].forEach((d, i) => d.classList.toggle("active", i === nearest));
+          };
+
+          slider.addEventListener("scroll", () => requestAnimationFrame(update), { passive: true });
+          update();
         });
 
         // تأثيرات الظهور عند التمرير
