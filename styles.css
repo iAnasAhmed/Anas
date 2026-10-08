@@ -958,21 +958,6 @@ footer {
   color: var(--secondary);
 }
 
-.bsco-phones {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.bsco-phones .bsco-shot {
-  width: 260px;
-}
-
-.bsco-phones .bsco-shot img {
-  aspect-ratio: 390 / 844;
-}
-
 .bsco-features {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -1048,12 +1033,6 @@ footer {
   }
 }
 
-@media (max-width: 576px) {
-  .bsco-phones .bsco-shot {
-    width: 100%;
-    max-width: 300px;
-  }
-}
 
 /* UI polish */
 .table-container {
