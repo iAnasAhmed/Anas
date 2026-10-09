@@ -31,10 +31,10 @@
 
             <div class="name-title">
               <h1>أنس أحمد</h1>
-              <h2>Growth Hacker | مطوّر Full-Stack | أخصائي تسويق</h2>
+              <h2>Growth Hacker | مطوّر <bdi class="nowrap">Full-Stack</bdi> | أخصائي تسويق</h2>
               <p class="tagline">انا أنس أحمد، Growth Hacker أدمج بين الإعلانات ومواقع الويب لتحقيق نمو حقيقي.
 أركز على بناء وتحسين النظام الكامل الذي يحوّل الزيارات إلى مبيعات ويزيد العائد على الاستثمار.
-أعمل حاليًا مطوّر Full-Stack في شركة BSCO.            </p>
+أعمل حاليًا مطوّر <bdi class="nowrap">Full-Stack</bdi> في شركة BSCO.            </p>
 
               <!-- <div class="mindset">
                 <div class="mindset-step">
@@ -968,13 +968,28 @@
               if (Math.abs(r.left + r.width / 2 - middle) < Math.abs(best.left + best.width / 2 - middle)) nearest = i;
             });
             [...dots.children].forEach((d, i) => d.classList.toggle("active", i === nearest));
-            // On mobile the slider is as tall as the card on screen, so short cards leave no gap
-            slider.style.height = getComputedStyle(slider).display === "flex" ? cards[nearest].offsetHeight + 8 + "px" : "";
           };
 
           slider.addEventListener("scroll", () => requestAnimationFrame(update), { passive: true });
+          // Always settle on a centered card after a swipe (iOS Safari does not snap reliably in RTL)
+          let dragging = false;
+          let settleTimer;
+          const settle = () => {
+            if (dragging || getComputedStyle(slider).display !== "flex") return;
+            const box = slider.getBoundingClientRect();
+            const middle = box.left + box.width / 2;
+            let offset = Infinity;
+            cards.forEach((card) => {
+              const r = card.getBoundingClientRect();
+              const d = r.left + r.width / 2 - middle;
+              if (Math.abs(d) < Math.abs(offset)) offset = d;
+            });
+            if (Math.abs(offset) > 2) slider.scrollBy({ left: offset, behavior: "smooth" });
+          };
+          slider.addEventListener("touchstart", () => { dragging = true; }, { passive: true });
+          slider.addEventListener("touchend", () => { dragging = false; clearTimeout(settleTimer); settleTimer = setTimeout(settle, 150); }, { passive: true });
+          slider.addEventListener("scroll", () => { clearTimeout(settleTimer); settleTimer = setTimeout(settle, 150); }, { passive: true });
           window.addEventListener("resize", () => requestAnimationFrame(update));
-          window.addEventListener("load", update);
           update();
         });
 

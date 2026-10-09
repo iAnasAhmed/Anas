@@ -1182,6 +1182,7 @@ footer {
   .mobile-slider > * {
     flex: 0 0 85%;
     scroll-snap-align: center;
+    scroll-snap-stop: always;
   }
 
   .mobile-slider > *:hover {
@@ -1228,8 +1229,9 @@ footer {
 
 /* Compact slider cards on mobile */
 @media (max-width: 768px) {
+  /* All cards share the tallest card height, so the section below never moves */
   .mobile-slider {
-    align-items: flex-start;
+    align-items: stretch;
   }
 
   .mobile-slider > * {
@@ -1324,16 +1326,68 @@ footer {
 }
 
 @media (max-width: 768px) {
-  /* Height follows the card on screen (set from the script) */
-  .mobile-slider {
-    overflow-y: hidden;
-    transition-property: height;
-    transition-duration: 200ms;
-    transition-timing-function: ease-out;
-  }
-
   .mobile-slider .experience-highlights h4,
   .mobile-slider .skills-used h5 {
     display: none;
   }
+}
+
+/* Typography: balanced headings, no lonely last words, aligned numbers */
+h1, h2, h3, h4, .section-title, .table-title span {
+  text-wrap: balance;
+}
+
+p, li, .tagline {
+  text-wrap: pretty;
+}
+
+.stat-value, .kpi-value, td, .source-head {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Accessibility: visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+.tab:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Accessibility: comfortable tap targets */
+.tab {
+  min-height: 48px;
+}
+
+.slider-dots button {
+  position: relative;
+}
+
+.slider-dots button::after {
+  content: "";
+  position: absolute;
+  inset: -18px -6px;
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .service-card:hover,
+  .experience-card:hover,
+  .stat-card:hover,
+  .cv-download:hover,
+  .bsco-live:hover {
+    transform: none;
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
 }
