@@ -131,7 +131,7 @@
           <i class="fas fa-building"></i>
         </div>
         <div class="company-info">
-          <h3 class="company-name">BSCO – Building Solutions Company</h3>
+          <h3 class="company-name"><bdi>BSCO – Building Solutions Company</bdi></h3>
           <span class="job-title">Full-Stack Developer</span>
           <span class="job-period">2025 – الحالي</span>
           <span class="job-location">عن بُعد / السعودية</span>
@@ -230,7 +230,7 @@
           <i class="fas fa-utensils"></i>
         </div>
         <div class="company-info">
-          <h3 class="company-name">Meat World Butchery & Restaurant</h3>
+          <h3 class="company-name"><bdi>Meat World Butchery &amp; Restaurant</bdi></h3>
           <span class="job-title">Senior Marketing Specialist</span>
           <span class="job-period">مايو 2025 – فبراير 2026</span>
           <span class="job-location">عن بُعد / مسقط، عُمان </span>
@@ -378,7 +378,7 @@
         </a>
       </div>
 
-      <h3 class="section-title" style="font-size: 1.6rem">
+      <h3 class="subsection-title">
         <i class="fas fa-list-check"></i> كل مميزات الموقع
       </h3>
 
@@ -508,16 +508,16 @@
       </h2>
 
 <!-- Tabs Navigation -->
-<div class="tabs">
-  <button class="tab active" data-tab="analytics">تحليل الموقع</button>
-  <button class="tab" data-tab="campaigns">حملات المبيعات</button>
-  <button class="tab" data-tab="messaging">حملات الرسائل</button>
+<div class="tabs" role="tablist">
+  <button class="tab active" data-tab="analytics" role="tab" aria-selected="true" aria-controls="analytics">تحليل الموقع</button>
+  <button class="tab" data-tab="campaigns" role="tab" aria-selected="false" aria-controls="campaigns">حملات المبيعات</button>
+  <button class="tab" data-tab="messaging" role="tab" aria-selected="false" aria-controls="messaging">حملات الرسائل</button>
 </div>
 
 <!-- Analytics Tab: Shopify results, May 1 – Oct 9, 2026 -->
-<div id="analytics" class="tab-content active" data-panel="analytics">
+<div id="analytics" class="tab-content active" data-panel="analytics" role="tabpanel">
   <div class="kpi-intro">
-    <h3><i class="fas fa-store"></i> <span>نتائج متجر <bdi>Ayat Fahiem Cosmetics</bdi></span></h3>
+    <h3><i class="fas fa-store"></i> <span>نتائج متجر <bdi class="nowrap">Ayat Fahiem Cosmetics</bdi></span></h3>
     <p>
       بيانات Shopify للفترة: <b>1 مايو – 9 أكتوبر 2026</b>. النسب الخضراء هي النمو مقارنة بالفترة السابقة
       (20 نوفمبر 2025 – 30 أبريل 2026).
@@ -606,10 +606,10 @@
       <!-- Campaigns Tab -->
 
 <!-- Campaigns Tab -->
-<div id="campaigns" class="tab-content" data-panel="campaigns">
-  <h2 class="section-title" style="font-size: 1.8rem">
+<div id="campaigns" class="tab-content" data-panel="campaigns" role="tabpanel">
+  <h3 class="section-title" style="font-size: 1.8rem">
     <i class="fas fa-bullhorn"></i> حملات شراء الموقع (Website Purchases)
-  </h2>
+  </h3>
 
   <!-- Campaigns Table Container -->
   <div class="table-container">
@@ -622,7 +622,7 @@
         <img src="meta-campaigns-2026.jpg" alt="حملة May_Campaigns على Meta Ads: 1.2K عملية شراء من الموقع" />
       </div>
       <div class="image-card">
-        <img src="3.jpeg" alt="Meta Ads Campaigns Performance" />
+        <img src="3.jpeg" alt="جدول حملات شراء الموقع على Meta Ads مع عدد المشتريات والتكلفة والعائد ROAS لكل حملة" />
         <!-- <div class="image-info">
           <h3 class="image-title">أداء حملات شراء الموقع</h3>
           <p class="image-desc">تحليل أداء حملات Meta Ads لشراء الموقع مع معدلات ROAS والتكلفة لكل نتيجة</p>
@@ -723,10 +723,10 @@
 </div>
 
 <!-- Messaging Tab - NOW IDENTICAL STRUCTURE -->
-<div id="messaging" class="tab-content" data-panel="messaging">
-  <h2 class="section-title" style="font-size: 1.8rem">
+<div id="messaging" class="tab-content" data-panel="messaging" role="tabpanel">
+  <h3 class="section-title" style="font-size: 1.8rem">
     <i class="fas fa-comments"></i> حملات المراسلة والتفاعل
-  </h2>
+  </h3>
 
   <!-- Instagram Messaging Container -->
   <div class="table-container">
@@ -736,7 +736,7 @@
     </div>
     <div style="padding: 1.5rem; text-align: center">
       <div class="image-card">
-        <img src="4.jpeg" alt="Instagram Messaging Campaigns" />
+        <img src="4.jpeg" alt="جدول حملات رسائل إنستجرام على Meta Ads مع عدد المحادثات وتكلفة كل محادثة" />
         <div class="image-info">
           <h3 class="image-title">حملات إنستجرام للمراسلة</h3>
           <p class="image-desc">أداء حملات المراسلة على إنستجرام لعلامة Ayat Fahiem Cosmetics</p>
@@ -814,7 +814,7 @@
     </div>
     <div style="padding: 1.5rem; text-align: center">
       <div class="image-card">
-        <img src="5.jpeg" alt="Restaurant Campaigns Performance" />
+        <img src="5.jpeg" alt="جدول حملات رسائل مطعم Meat World على Meta Ads مع عدد المحادثات والتكلفة" />
         <div class="image-info">
           <h3 class="image-title">حملات Meat World Restaurant</h3>
           <p class="image-desc">أداء حملات المطعم والمراسلة لعلامة Meat World في مسقط، عُمان</p>
@@ -935,12 +935,15 @@
 
             // إضافة النشاط إلى علامة التبويب المحددة والمحتوى المقابل
             tab.classList.add("active");
+            tabs.forEach((t) => t.setAttribute("aria-selected", t === tab));
             const tabId = tab.getAttribute("data-tab");
             document
               .querySelectorAll(`.tab-content[data-panel="${tabId}"]`)
               .forEach((panel) => panel.classList.add("active"));
           });
         });
+
+        const motion = matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
 
         // نقاط السلايدر على الموبايل (الخبرات ومميزات BSCO)
         document.querySelectorAll(".mobile-slider").forEach((slider) => {
@@ -953,7 +956,7 @@
             dot.type = "button";
             dot.tabIndex = -1;
             dot.addEventListener("click", () =>
-              card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" }),
+              card.scrollIntoView({ behavior: motion, block: "nearest", inline: "center" }),
             );
             dots.appendChild(dot);
           });
@@ -984,7 +987,7 @@
               const d = r.left + r.width / 2 - middle;
               if (Math.abs(d) < Math.abs(offset)) offset = d;
             });
-            if (Math.abs(offset) > 2) slider.scrollBy({ left: offset, behavior: "smooth" });
+            if (Math.abs(offset) > 2) slider.scrollBy({ left: offset, behavior: motion });
           };
           slider.addEventListener("touchstart", () => { dragging = true; }, { passive: true });
           slider.addEventListener("touchend", () => { dragging = false; clearTimeout(settleTimer); settleTimer = setTimeout(settle, 150); }, { passive: true });
@@ -1002,15 +1005,18 @@
         const observer = new IntersectionObserver(function (entries) {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.style.opacity = "1";
-              entry.target.style.transform = "translateY(0)";
+              const el = entry.target;
+              el.style.opacity = "";
+              el.style.transform = "";
+              el.addEventListener("transitionend", () => { el.style.transition = ""; }, { once: true });
+              observer.unobserve(el);
             }
           });
         }, observerOptions);
 
         // مراقبة العناصر لإضافة تأثيرات الظهور
         document
-          .querySelectorAll(".stat-card, .service-card, .table-container")
+          .querySelectorAll(".service-card, .stat-card:not(.tab-content *), .table-container:not(.tab-content *)")
           .forEach((card) => {
             card.style.opacity = "0";
             card.style.transform = "translateY(20px)";
@@ -1030,27 +1036,6 @@
           }, index * 200);
         });
 
-        // تأثير تحميل السيرة الذاتية
-        const cvButton = document.querySelector(".cv-download");
-        if (cvButton) {
-          cvButton.addEventListener("click", function (e) {
-            if (!this.getAttribute("href")) {
-              e.preventDefault();
-              this.innerHTML =
-                '<i class="fas fa-spinner fa-spin"></i><span>جاري التحميل...</span>';
-
-              setTimeout(() => {
-                this.innerHTML =
-                  '<i class="fas fa-check"></i><span>تم التحميل!</span>';
-
-                setTimeout(() => {
-                  this.innerHTML =
-                    '<i class="fas fa-download"></i><span>تحميل السيرة الذاتية الكاملة (PDF)</span>';
-                }, 1500);
-              }, 1000);
-            }
-          });
-        }
       });
     </script>
   </body>

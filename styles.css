@@ -1163,7 +1163,7 @@ footer {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .mobile-slider {
     display: flex;
     gap: 1rem;
@@ -1228,7 +1228,7 @@ footer {
 }
 
 /* Compact slider cards on mobile */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   /* All cards share the tallest card height, so the section below never moves */
   .mobile-slider {
     align-items: stretch;
@@ -1325,7 +1325,7 @@ footer {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .mobile-slider .experience-highlights h4,
   .mobile-slider .skills-used h5 {
     display: none;
@@ -1390,4 +1390,214 @@ button:focus-visible,
 
 .nowrap {
   white-space: nowrap;
+}
+
+/* ===== Expert check fixes ===== */
+:root {
+  --primary-text: #b07cff;
+  --transition: transform 150ms ease-out, background-color 150ms ease-out, box-shadow 150ms ease-out, color 150ms ease-out;
+}
+
+/* Typography */
+h1, h2, h3, h4, .section-title, .service-title {
+  line-height: 1.25;
+}
+
+@media (max-width: 576px) {
+  .service-title {
+    font-size: 1.2rem;
+  }
+}
+
+td {
+  display: table-cell;
+}
+
+.subsection-title {
+  font-size: 1.4rem;
+  color: var(--secondary);
+  margin: 2rem 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Readable purple text */
+.job-title,
+.skills-used h5,
+.bsco-role {
+  color: var(--primary-text);
+}
+
+.roas-high { color: #5cc962; }
+.roas-low { color: #ff6b5e; }
+
+/* Calmer hover motion */
+.service-card:hover,
+.experience-card:hover {
+  transform: translateY(-4px);
+}
+
+.cv-download,
+.bsco-live {
+  transition-property: transform, box-shadow, scale;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+}
+
+/* Profile photo fills its frame */
+.profile-image {
+  border: none;
+  box-shadow: 0 0 0 3px var(--primary), var(--shadow);
+}
+
+.profile-img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* CV button gets breathing room */
+.table-container > .cv-download {
+  margin: 1.5rem;
+  width: calc(100% - 3rem);
+  justify-content: center;
+}
+
+@media (min-width: 769px) {
+  .table-container > .cv-download {
+    width: auto;
+  }
+}
+
+/* Spacing between sections */
+.experience-section {
+  margin-block: 0 4rem;
+  padding-block: 0;
+}
+
+.tab-content.active > :last-child {
+  margin-bottom: 0;
+}
+
+/* Grids without lonely last cards */
+.services-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+}
+
+@media (min-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .service-card {
+    grid-column: span 2;
+  }
+
+  .service-card:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+}
+
+@media (min-width: 601px) {
+  .experience-grid,
+  .bsco-features {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+  }
+}
+
+/* RTL-safe alignment */
+.kpi-value,
+th,
+.mobile-slider .experience-header {
+  text-align: start;
+}
+
+.kpi-change {
+  align-self: start;
+}
+
+.tagline,
+.dashboard-header {
+  border-right: 0;
+  border-inline-start: 4px solid var(--primary);
+}
+
+.service-card::before,
+.experience-card::before,
+.bsco-feature-group::before {
+  right: auto;
+  inset-inline-start: 0;
+}
+
+.experience-highlights li::before {
+  right: auto;
+  inset-inline-start: -1.2rem;
+}
+
+.section-title i {
+  margin-left: 0;
+  margin-inline-end: 10px;
+}
+
+.skill-tag {
+  margin: 0.2rem;
+  margin-inline-end: 0.5rem;
+}
+
+/* Phone slider details */
+@media (max-width: 600px) {
+  .mobile-slider .company-logo {
+    border-radius: 12px;
+  }
+
+  .mobile-slider .skill-tag {
+    font-size: 0.78rem;
+  }
+
+  .mobile-slider .job-period,
+  .mobile-slider .job-location {
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mobile-slider .experience-highlights li::before {
+    inset-inline-start: -1rem;
+  }
+
+  /* 44px tap targets for the dots */
+  .slider-dots {
+    gap: 0;
+  }
+
+  .slider-dots button,
+  .slider-dots button.active {
+    width: 44px;
+    height: 44px;
+    background: none;
+    display: grid;
+    place-items: center;
+  }
+
+  .slider-dots button::after {
+    content: none;
+  }
+
+  .slider-dots button::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.25);
+    transition: width 150ms ease-out, background-color 150ms ease-out;
+  }
+
+  .slider-dots button.active::before {
+    width: 22px;
+    background-color: var(--secondary);
+  }
+
+  .slider-dots button:active {
+    scale: 0.96;
+  }
 }
