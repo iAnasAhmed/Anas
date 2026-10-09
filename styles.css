@@ -1601,3 +1601,122 @@ th,
     scale: 0.96;
   }
 }
+
+/* Desktop grids: equal-height cards in each row */
+@media (min-width: 601px) {
+  .experience-grid,
+  .bsco-features {
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 1200px) {
+  .bsco-features {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .experience-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Touch screens: no sticky hover after a tap (iPhone keeps :hover on the tapped card) */
+@media (hover: none) {
+  .service-card:hover,
+  .experience-card:hover,
+  .stat-card:hover,
+  .bsco-feature-group:hover,
+  .cv-download:hover,
+  .bsco-live:hover,
+  .mindset-step:hover {
+    transform: none;
+  }
+
+  .service-card:hover,
+  .experience-card:hover,
+  .stat-card:hover {
+    box-shadow: var(--shadow-border), var(--shadow);
+    background-color: var(--dark-card);
+  }
+
+  .skill-tag:hover {
+    background-color: var(--dark-card);
+    box-shadow: var(--shadow-border);
+  }
+}
+
+/* Never clip the top or bottom edge of slider cards */
+@media (max-width: 600px) {
+  .mobile-slider {
+    padding-block: 6px;
+  }
+
+  .mobile-slider > *:hover {
+    transform: none;
+  }
+}
+
+/* One card design: BSCO feature cards match the work-experience cards */
+.experience-highlights li,
+.bsco-feature-group li {
+  position: relative;
+  padding: 0.6rem 0;
+  padding-inline-start: 1.4rem;
+  border-bottom: none;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.experience-highlights li::before,
+.bsco-feature-group li::before {
+  content: "←";
+  position: absolute;
+  right: auto;
+  inset-inline-start: 0;
+  top: 0.6rem;
+  color: var(--secondary);
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.bsco-feature-group {
+  padding: 2rem;
+}
+
+.bsco-feature-group h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .mobile-slider .experience-card,
+  .mobile-slider .bsco-feature-group {
+    padding: 1.1rem 1.25rem;
+  }
+
+  .mobile-slider .experience-highlights li,
+  .mobile-slider .bsco-feature-group li {
+    padding: 0.3rem 0;
+    padding-inline-start: 1.2rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .mobile-slider .experience-highlights li::before,
+  .mobile-slider .bsco-feature-group li::before {
+    inset-inline-start: 0;
+    top: 0.3rem;
+    font-size: 0.85rem;
+  }
+
+  .mobile-slider .bsco-feature-group h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Dots closer together, still easy to tap */
+  .slider-dots button,
+  .slider-dots button.active {
+    width: 32px;
+  }
+}
